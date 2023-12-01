@@ -1,0 +1,17 @@
+.cool-input {
+  width: 50%;  /* Adjust as needed, e.g., 50% or 200px */
+  padding: 15px; /* Increase padding for more height */
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: white;
+  margin: 10px 0;
+  text-align: center; /* Center the text inside the input box */
+}
+
+.cool-input::placeholder {
+  color: #333;
+  text-align: center; /* Center the placeholder text */
+  opacity: 1; /* Optional: Adjust the opacity of the placeholder text */
+}

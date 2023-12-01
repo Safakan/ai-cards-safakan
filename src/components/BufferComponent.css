@@ -1,0 +1,35 @@
+.buffer {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* or absolute, depending on layout */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+    z-index: 10; /* ensure it's above other content */
+  }
+  
+  .buffer.show {
+    display: flex; /* Show the buffer when loading is true */
+  }
+  
+  .buffer-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-top-color: blue; /* Different color for spinning part */
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg); 
+    }
+  }
+  
