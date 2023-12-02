@@ -76,3 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 npm install react-slick slick-carousel
 npm install react-grid-gallery
 npm install tailwindcss postcss autoprefixer -D
+
+
+learned about cors settings

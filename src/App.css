@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   margin-top: 50px;
+  flex-direction: column;
 }
 
 .heading {

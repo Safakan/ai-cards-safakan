@@ -6,29 +6,49 @@ import SubmitButton from './components/SubmitButton';
 import BufferComponent from './components/BufferComponent';
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (inputValue) => {
-    setLoading(true); // Start loading
+  const handleSubmit = async () => {    // Remove inputValue from here
+    setLoading(true); 
     console.log("Submitted Value:", inputValue);
-    // Here, call your API or perform actions, then stop loading
-    // For demonstration, stopping loading after 3 seconds
-    setTimeout(() => setLoading(false), 3000);
+
+    try {
+      const response = await fetch('https://llmcards.safakan.com/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: inputValue })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Response Data:", data);
+
+    } catch (error) {
+      console.error("Error during API call:", error);
+    }
+
+    setLoading(false);
   };
 
   return (
     <div className="App">
       <h1 className="heading">LLM CARDS</h1>
-      <div>
-      <InputBox onSubmit={handleSubmit} />
-      </div>
-      <div>
-      <SubmitButton onClick={handleSubmit} />
-      </div>
-      <div>
-      <BufferComponent loading={loading} />
+      <p> it's time for you to have fun</p>
+
       <SwiperComponent />
-      </div>
+
+      <BufferComponent loading={loading} />    
+      <InputBox setInputValue={setInputValue} onSubmit={handleSubmit} />      
+
+      <p> </p>
+
+      <SubmitButton onClick={handleSubmit} />
     </div>
   );
 }
