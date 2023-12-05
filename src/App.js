@@ -6,15 +6,17 @@ import SubmitButton from './components/SubmitButton';
 import BufferComponent from './components/BufferComponent';
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [inputValue, setInputValue] = useState(""); // Separate state for input value
+  const [deckData, setDeckData] = useState(null);   // Separate state for deck data
+  const [loading, setLoading] = useState(false);    // Separate state for loading
+
 
   const handleSubmit = async () => {    // Remove inputValue from here
     setLoading(true); 
     console.log("Submitted Value:", inputValue);
 
     try {
-      const response = await fetch('https://llmcards.safakan.com/', {
+      const response = await fetch('https://llmcards.safakan.com/create_deck_from_input', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -28,10 +30,11 @@ function App() {
 
       const data = await response.json();
       console.log("Response Data:", data);
+      setDeckData(data.deck); // Update state with API response data
 
     } catch (error) {
       console.error("Error during API call:", error);
-    }
+    }    
 
     setLoading(false);
   };
@@ -41,14 +44,16 @@ function App() {
       <h1 className="heading">LLM CARDS</h1>
       <p> it's time for you to have fun</p>
 
-      <SwiperComponent />
-
       <BufferComponent loading={loading} />    
       <InputBox setInputValue={setInputValue} onSubmit={handleSubmit} />      
 
       <p> </p>
 
       <SubmitButton onClick={handleSubmit} />
+
+      <SwiperComponent deckData={deckData} /> {/* Pass API response data to SwiperComponent */}
+
+
     </div>
   );
 }

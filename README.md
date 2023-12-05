@@ -79,3 +79,11 @@ npm install tailwindcss postcss autoprefixer -D
 
 
 learned about cors settings
+
+had problems setting up the Dockerfile appropriately.
+current version doesnt use build, the problem was excluding node_modules somehow.
+need to test the build version for production deployment for later.
+
+websockets...
+
+not working on the first try.

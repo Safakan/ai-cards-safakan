@@ -9,20 +9,13 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import './SwiperComponent.css';
 
 const slideData = [
-  { text1: 'Text 1A', text2: 'Text 1B' },
-  { text1: 'Text 2A', text2: 'Text 2B' },
-  { text1: 'Text 3A', text2: 'Text 3B' },
-  { text1: 'Text 4A', text2: 'Text 4B' },
-  { text1: 'Text 5A', text2: 'Text 5B' },
-  { text1: 'Text 6A', text2: 'Text 6B' },
-  { text1: 'Text 7A', text2: 'Text 7B' },
-  { text1: 'Text 8A', text2: 'Text 8B' },
-  { text1: 'Text 9A', text2: 'Text 9B' },
-  { text1: 'Text 10A', text2: 'Text 10B' },
+  { front: 'Text 1A', back: 'Text 1B' },
+  { front: 'Text 2A', back: 'Text 2B' },
+  { front: 'Text 3A', back: 'Text 3B' },
   // ... additional slides ...
 ];
 
-const SwiperComponent = () => {
+const SwiperComponent = ( { deckData } ) => { // Accept deckData as prop
   const [flipped, setFlipped] = useState(Array(slideData.length).fill(false));
   const swiperRef = useRef(null); // Reference to the Swiper instance
 
@@ -44,6 +37,8 @@ const SwiperComponent = () => {
       }
     }
   };
+
+  const slides = deckData || slideData; // Use API response data if available, otherwise use default data
 
   return (
     <Swiper
@@ -70,17 +65,17 @@ const SwiperComponent = () => {
       modules={[EffectCoverflow, Pagination, Navigation]}
       className="swiper_container"
     >
-      {slideData.map((slide, index) => (
+      {slides.map((slide, index) => (
                   <SwiperSlide key={index} onClick={() => handleFlip(index)}>
             <div className={`flip-container ${flipped[index] ? 'flipped' : ''}`}>
               <div className="flipper">
                 <div className="front">
                   <p className="slide-label">🤔💭❔💭🤔</p> {/* EMOJIS JUST SAYING THIS IS FRONT */}
-                  <p>{slide.text1}</p>
+                  <p>{slide.front}</p>
                 </div>
                 <div className="back">
                   <p className="slide-label">😲🎉🔍🎉😲</p> {/* EMOJIS JUST SAYING THIS IS BACK */}
-                  <p>{slide.text2}</p>
+                  <p>{slide.back}</p>
                 </div>
               </div>
             </div>
