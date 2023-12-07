@@ -1,4 +1,4 @@
-# Quick Start Guide for AI Cards Front-End
+# React Front-End for the AI Cards app.
 
 This is an example front-end created with React for the AI Cards FastAPI application.
 
