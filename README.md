@@ -7,7 +7,7 @@ This is an example front-end created with React for the AI Cards FastAPI applica
 
 ## How to Use
 
-To get started, simply run `npm start` in your project directory. This will launch the app in development mode. You can view it in your browser at [http://localhost:3000](http://localhost:3000). The page will automatically reload if you make any changes, and you'll see lint errors in the console.
+To get started use `npm install` in your project directory, then simply run `npm start`. This will launch the app in development mode. You can view it in your browser at [http://localhost:3000](http://localhost:3000). The page will automatically reload if you make any changes, and you'll see lint errors in the console.
 
 ## Additional Setup
 
